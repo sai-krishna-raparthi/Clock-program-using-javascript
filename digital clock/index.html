@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Digital Clock using javascript</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="hero">
+            <div class="container">
+                <div class="clock">
+                    <span id="hrs">00</span>
+                    <span>:</span>
+                    <span id="min">00</span>
+                    <span>:</span>
+                    <span id="sec">00</span>
+                    <span id="amOrpm">AM</span>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            setInterval(()=>{
+                let currentTime =new Date();
+
+                let hours = document.getElementById("hrs");
+                let min = document.getElementById("min");
+                let sec = document.getElementById("sec");
+                let amOrpm1 = document.getElementById("amOrpm");
+
+                let hrs = currentTime.getHours();
+                let amOrpm = hrs>=12?"PM":"AM";
+                hrs = (hrs % 12) || 12;
+
+            hours.innerHTML = hrs;
+            min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+            sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+            amOrpm1.innerHTML = amOrpm;
+            },1000);
+        </script>
+    </body>
+</html>
